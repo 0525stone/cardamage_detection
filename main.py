@@ -1,6 +1,8 @@
 """
 [Socar X AIFFEL] Car Damage Detection
 
+making sample prototype
+
 """
 
 """
