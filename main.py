@@ -23,7 +23,7 @@ import cv2
 
 if __name__ == '__main__':
 
-    print('in')
+    print('in main')
     img_dir = ['./data/example.jpeg']
 
     imageA = cv2.imread(img_dir[0])
