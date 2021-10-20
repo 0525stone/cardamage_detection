@@ -1,6 +1,6 @@
 """
 [Socar X AIFFEL] Car Damage Detection
-df
+
 """
 
 """
