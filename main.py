@@ -1,13 +1,15 @@
 """
 [Socar X AIFFEL] Car Damage Detection
 
-
 making sample prototype
 
 """
 
 """
 Record
+2021.10.28
+- Image check code needed
+
 
 2021.10.19
 - 각 모듈 별로 구현을 하여, 입력 영상을 주면 원하는 형태의 최종 결과 나오는 것 확인
