@@ -6,24 +6,26 @@ from matplotlib import pyplot as plt
 from os import listdir
 from os.path import isfile, join
 
-def read_data():
+def read_data(dir_path = os.getcwd()+'/data/segmentation/'):
 
     print(os.getcwd())
     print(os.path.dirname(os.path.realpath(__file__)))
 
+ # 확인해보고 싶은 데이터 CLASS
     cls = 'dent'
     # cls = 'scratch'
     # cls = 'spacing'
-    if(cls == 'dent'):
-        img_path = os.getcwd()+'/data/segmentation/'+cls+'/valid/images/'
-        mask_path = os.getcwd() + '/data/segmentation/' + cls + '/valid/masks/'
+    img_path = dir_path+cls+'/valid/images/'
+    mask_path = dir_path + cls + '/valid/masks/'
 
+ # 해당 directory file 긁어옴
     image_list = os.listdir(img_path)
     mask_list = os.listdir(mask_path)
     print(os.listdir(img_path))
     print(len(os.listdir(img_path)))
 
     for idx, (image, mask) in enumerate(zip(image_list, mask_list)):
+      # 일단 한장
         if idx<1:
             print(f'{idx+1} 번째 : {image}, {mask}')
 
