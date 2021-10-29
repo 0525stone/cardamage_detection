@@ -6,8 +6,21 @@ from matplotlib import pyplot as plt
 from os import listdir
 from os.path import isfile, join
 
-def read_data(dir_path = os.getcwd()+'/data/segmentation/'):
+"""
+directory
+-[여기를 dir_path로] 
+    -dent       -images
+                -masks
+    -scratch    -images
+                -masks
+    -spacing    -images
+                -masks
 
+
+read_data
+    - dir_path 는 해당 프로젝트 디렉토리에서 data 접근 전 위치로 하면 됨
+"""
+def read_data(dir_path = os.getcwd()+'/data/segmentation/'):
     print(os.getcwd())
     print(os.path.dirname(os.path.realpath(__file__)))
 
