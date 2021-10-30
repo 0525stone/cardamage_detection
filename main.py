@@ -19,22 +19,30 @@ Record
 """
 # from src import 만든 모듈명
 from src import *
-from src import car_localize, carcomponent_classify
+from src import car_localize, carcomponent_classify, check_data
 from src import globaldamage_classify,localdamage_classify
 
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
+import os
 
 if __name__ == '__main__':
 
     print('in main')
     img_dir = ['./data/example.jpeg']
 
-    imageA = cv2.imread(img_dir[0])
-    imageA = cv2.cvtColor(imageA,cv2.COLOR_BGR2RGB)
+    # imageA = cv2.imread(img_dir[0])
+    # imageA = cv2.cvtColor(imageA,cv2.COLOR_BGR2RGB)
     # plt.imshow(imageA)
     # plt.waitforbuttonpress(0)
     # plt.close()
 
-    car_localize.detect_car(imageA)
+    dir_path = os.getcwd()+'/data/segmentation/'
+    check_data.read_data(dir_path)
+
+
+    # car_localize.detect_car(imageA)
+
+
+
