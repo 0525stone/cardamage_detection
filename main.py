@@ -40,7 +40,8 @@ if __name__ == '__main__':
     # plt.close()d
 
     dir_path = os.getcwd()+'/data/segmentation/'
-    check_data.read_data(dir_path)
+    # check_data.read_data(dir_path)
+    check_data.read_spacing(dir_path)
 
 
     # car_localize.detect_car(imageA)
