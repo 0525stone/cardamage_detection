@@ -37,7 +37,7 @@ if __name__ == '__main__':
     # imageA = cv2.cvtColor(imageA,cv2.COLOR_BGR2RGB)
     # plt.imshow(imageA)
     # plt.waitforbuttonpress(0)
-    # plt.close()
+    # plt.close()d
 
     dir_path = os.getcwd()+'/data/segmentation/'
     check_data.read_data(dir_path)
