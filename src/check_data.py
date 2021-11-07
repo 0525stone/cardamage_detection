@@ -16,6 +16,7 @@ directory
     -spacing    -images
                 -masks
 
+- Label 추가하는 코드랑 annotation file 추가하는 코드도 추가할 필요 OO
 
 read_data
     - dir_path 는 해당 프로젝트 디렉토리에서 data 접근 전 위치로 하면 됨
