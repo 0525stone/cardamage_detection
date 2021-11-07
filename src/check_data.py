@@ -152,13 +152,14 @@ def read_spacing(dir_path = os.getcwd()+'/data/segmentation/'):
 
 
 
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             # img_show = img
 
             img_show = cv2.addWeighted(img, 1, color_mask, 0.2, 0.0)
             # img_show = cv2.addWeighted(img_show, 1, color_mask2, 0.4, 0.0)
 
           # save file part
+            # 저장할 때는 BRG2RGB 필요 없음 show할 때만 필요
             save_path = './data/answer_spacing/'
             save_file = save_path+image
             print(save_file)
