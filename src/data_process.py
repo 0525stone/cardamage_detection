@@ -30,6 +30,7 @@ def combine_mask(msk_dir1, msk_dir2):
     dent 의 damage 가 더 critical 한 것이기 때문에 dent mask가 scatch mask를 덮어씌게 할 예정
 
     overlaped part can be get by & operator
+    https://python.plainenglish.io/how-to-find-an-intersection-between-two-matrices-easily-using-numpy-30263373b546
     """
     # mask directory : msk1_dir, msk2_dir
     msk_list1 = os.listdir(msk_dir1)
