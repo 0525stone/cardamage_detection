@@ -12,6 +12,7 @@ import os
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+from PIL import Image
 
 data_dir = "../data/accida_segmentation_dataset_v1"
 ##
@@ -27,6 +28,8 @@ def combine_mask(msk_dir1, msk_dir2):
     image histogram : http://www.gisdeveloper.co.kr/?p=6634
 
     dent 의 damage 가 더 critical 한 것이기 때문에 dent mask가 scatch mask를 덮어씌게 할 예정
+
+    overlaped part can be get by & operator
     """
     # mask directory : msk1_dir, msk2_dir
     msk_list1 = os.listdir(msk_dir1)
@@ -39,8 +42,9 @@ def combine_mask(msk_dir1, msk_dir2):
         print('The number of masks are different')
         return 0
 
+    ii = 0
     for idx, (msk1_name, msk2_name) in enumerate(zip(msk_list1, msk_list2)):
-        msk1 = cv2.imread(os.path.join(msk_dir1, msk1_name), 0)
+        msk1 = cv2.imread(os.path.join(msk_dir1, msk1_name), 0) # read image as gray scale
         msk2 = cv2.imread(os.path.join(msk_dir2, msk2_name), 0)
 
         msk1 = np.array(msk1)
@@ -49,16 +53,25 @@ def combine_mask(msk_dir1, msk_dir2):
         n1 = len(np.where(msk1 != 0)[0])
         n2 = len(np.where(msk2 != 0)[0])
 
+        # if ii<10:
         if(n1==0 and n2==0):
             pass
-        elif (n1 > n2):
-            print(f'n1 {n1} is bigger than n2 {n2}')
-        elif (n1 < n2):
-            print(f'n2 {n2} is bigger than n1 {n1}')
-        elif (n1 == n2):
-            print(f'n1 {n1} == n2 {n2}')
+        else:# (n1 != n2):
+            print(f'n1 {n1}  n2 {n2}')
+            ii += 1
 
-        # else:
+            plt.figure()
+            plt.subplot(121)
+            plt.imshow(msk1)
+
+            plt.subplot(122)
+            plt.imshow(msk2)
+
+            plt.show()
+
+
+
+    # else:
         #     break
 
 
