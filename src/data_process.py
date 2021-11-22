@@ -43,7 +43,6 @@ def combine_mask(msk_dir1, msk_dir2):
     # mask directory : msk1_dir, msk2_dir
     msk_list1 = os.listdir(msk_dir1)
     msk_list2 = os.listdir(msk_dir2)
-
     msk_list1.sort()
     msk_list2.sort()
 
@@ -55,10 +54,10 @@ def combine_mask(msk_dir1, msk_dir2):
     # for idx, (msk1_name, msk2_name) in enumerate(zip(msk_list1, msk_list2)):
     #     msk1 = cv2.imread(os.path.join(msk_dir1, msk1_name), 0)  # read image as gray scale
     #     msk2 = cv2.imread(os.path.join(msk_dir2, msk2_name), 0)
-        # msk1 = np.where(msk1 < 10, 0, msk1)  # 10이하의 값들은 0으로 바꿔줌
-        # msk1 = np.where(msk1 > 245, 255, msk1)  # 245이상의 값들은 255으로 바꿔줌
-        # msk2 = np.where(msk2 < 10, 0, msk2)  # 10이하의 값들은 0으로 바꿔줌
-        # msk2 = np.where(msk2 > 245, 255, msk2)  # 245이상의 값들은 255으로 바꿔줌
+    #     msk1 = np.where(msk1 < 10, 0, msk1)  # 10이하의 값들은 0으로 바꿔줌
+    #     msk1 = np.where(msk1 > 245, 255, msk1)  # 245이상의 값들은 255으로 바꿔줌
+    #     msk2 = np.where(msk2 < 10, 0, msk2)  # 10이하의 값들은 0으로 바꿔줌
+    #     msk2 = np.where(msk2 > 245, 255, msk2)  # 245이상의 값들은 255으로 바꿔줌
 
     if 1:
         # sample example
@@ -74,7 +73,6 @@ def combine_mask(msk_dir1, msk_dir2):
         msk2 = np.where(msk2 < 10, 0, msk2)
         msk2 = np.where(msk2 > 245, 255, msk2)
 
-
         print(f'mask shape : {msk1.shape}')
 
     # dent, scratch 어떤걸 위에 올릴지 정하는 부분
@@ -82,8 +80,8 @@ def combine_mask(msk_dir1, msk_dir2):
         # overlapped area : msk3
         msk3 = msk1 * msk2
         msk3_p = np.where(msk3 != 0) # overlap area to 0
-        msk1[msk3_p] = 0 # overlap area process 1
-        # msk2[msk3_p] = 0 # overlap area process 2
+        # msk1[msk3_p] = 0 # overlap area process 1
+        msk2[msk3_p] = 0 # overlap area process 2
         msk_new[:, :, 0] = msk2 # msk2 color : (255, 0, 0)
         msk_new[:, :, 2] = msk1 # msk1 color : (0, 0, 255)
 
@@ -91,16 +89,11 @@ def combine_mask(msk_dir1, msk_dir2):
         print(f'overlaped2 : {len(np.where(msk_new == (255.0, 0, 255.0))[0])}')
         print(f'{msk_new[:,:,0].min()}  {msk_new[:,:,0].max()}')
 
-        # print(f'overlaped1 : {len(np.where(msk1 != 255)[0])}')
-        # print(f'overlaped2 : {len(np.where(msk1 == 255)[0])}')
-
         print(f'new mask shape : {msk_new.shape}')
 
         # pixel count
         n1 = len(np.where(msk1 != 0)[0])
         n2 = len(np.where(msk2 != 0)[0])
-
-
 
         if ii<10:
             if(n1==0 and n2==0):
