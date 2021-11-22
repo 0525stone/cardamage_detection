@@ -52,11 +52,16 @@ def combine_mask(msk_dir1, msk_dir2):
 
 # Making directories for new mask
     result_dir = '../data/new_mask'
+    if 'train' in msk_dir1:
+        tr_te_va = 'train'
+    elif 'test' in msk_dir1:
+        tr_te_va = 'test'
+    elif 'valid' in msk_dir1:
+        tr_te_va = 'valid'
+    result_dir = os.path.join(result_dir, tr_te_va)
     if not os.path.exists(result_dir):
-        os.makedirs(os.path.join(result_dir,'train'))
-        os.makedirs(os.path.join(result_dir, 'test'))
-        os.makedirs(os.path.join(result_dir, 'valid'))
-        # os.makedirs(os.path.join(result_dir, 'numpy'))
+        os.makedirs(result_dir)
+
 
     ii = 0
     for idx, (msk1_name, msk2_name) in enumerate(zip(msk_list1, msk_list2)):
