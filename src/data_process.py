@@ -21,6 +21,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
+##
+
 
 ##
 def image_resize():
@@ -61,7 +63,6 @@ def combine_mask(msk_dir1, msk_dir2, result_dir):
     result_dir = os.path.join(result_dir, tr_te_va)
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
-
 
     # ii = 0
     for idx, (msk1_name, msk2_name) in enumerate(zip(msk_list1, msk_list2)):
@@ -123,10 +124,7 @@ def combine_mask(msk_dir1, msk_dir2, result_dir):
 
 
 
-
-
 ## 실행하는 부분
-
 # for c in ['dent', 'scratch', 'spacing']:
 #     for t in ['test', 'valid', 'train']:
 #         file_list = os.listdir(os.path.join(data_dir,c,t,'masks'))
