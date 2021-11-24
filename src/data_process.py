@@ -6,7 +6,7 @@ Already made
 New
 - [Done on 22 Nov]mask 겹치는 코드 필요
 - 분포 확인
-- image crop(resize) to 512x512 size
+- image crop(resize) to 512x512 size : 이건 꼭 중요하지 않음 train pipeline, test pipeline에 포함되어 있음
 
 mask 기준
 - dent 를 scratch 위에
