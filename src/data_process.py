@@ -4,9 +4,9 @@ Already made
 - mask, data 겹쳐서 확인
 
 New
-- mask 겹치는 코드 필요
+- [Done on 22 Nov]mask 겹치는 코드 필요
 - 분포 확인
-- image crop(resize) to 512x512 size
+- image crop(resize) to 512x512 size : 이건 꼭 중요하지 않음 train pipeline, test pipeline에 포함되어 있음
 
 mask 기준
 - dent 를 scratch 위에
@@ -16,10 +16,12 @@ mask 기준
 """
 ##
 import os
-import numpy as np
 import cv2
+import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+
+##
 
 
 ##
@@ -31,7 +33,7 @@ def image_crop():
     pass
 
 
-def combine_mask(msk_dir1, msk_dir2):
+def combine_mask(msk_dir1, msk_dir2, result_dir):
     """
     image histogram : http://www.gisdeveloper.co.kr/?p=6634
 
@@ -51,7 +53,7 @@ def combine_mask(msk_dir1, msk_dir2):
         return 0
 
 # Making directories for new mask
-    result_dir = '../data/new_mask'
+#     result_dir = '../data/new_mask'
     if 'train' in msk_dir1:
         tr_te_va = 'train'
     elif 'test' in msk_dir1:
@@ -61,7 +63,6 @@ def combine_mask(msk_dir1, msk_dir2):
     result_dir = os.path.join(result_dir, tr_te_va)
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
-
 
     # ii = 0
     for idx, (msk1_name, msk2_name) in enumerate(zip(msk_list1, msk_list2)):
@@ -123,20 +124,19 @@ def combine_mask(msk_dir1, msk_dir2):
 
 
 
-
-
 ## 실행하는 부분
-
 # for c in ['dent', 'scratch', 'spacing']:
 #     for t in ['test', 'valid', 'train']:
 #         file_list = os.listdir(os.path.join(data_dir,c,t,'masks'))
 #         print(len(file_list))
-data_dir = "../data/accida_segmentation_dataset_v1"
 
+# define directory path
+data_dir = "../data/accida_segmentation_dataset_v1"
 msk_dir1 = os.path.join(data_dir,'dent','test','masks')
 msk_dir2 = os.path.join(data_dir,'scratch','test','masks')
+result_dir = '../data/new_mask'
 
-combine_mask(msk_dir1, msk_dir2)
+combine_mask(msk_dir1, msk_dir2, result_dir)
 
 
 
